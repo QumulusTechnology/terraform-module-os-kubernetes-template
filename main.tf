@@ -1,5 +1,9 @@
 locals {
 
+  external_network_name   = coalesce(var.external_network_name, "external-${var.user_name}")
+  kubernetes_network_name = coalesce(var.kubernetes_network_name, "kubernetes-${var.user_name}")
+  name                    = coalesce(var.name, "${data.openstack_identity_project_v3.current.name}-v${var.kube_version}")
+
 }
 
 data "openstack_identity_project_v3" "current" {
@@ -7,11 +11,11 @@ data "openstack_identity_project_v3" "current" {
 }
 
 data "openstack_networking_network_v2" "external" {
-  name = "external-${var.user_name}"
+  name = local.external_network_name
 }
 
 data "openstack_networking_network_v2" "kubernetes" {
-  name = "kubernetes-${var.user_name}"
+  name = local.kubernetes_network_name
 }
 
 data "openstack_networking_subnet_v2" "kubernetes" {
@@ -23,7 +27,7 @@ data "openstack_compute_keypair_v2" "this" {
 }
 
 resource "openstack_containerinfra_clustertemplate_v1" "this" {
-  name                  = "${data.openstack_identity_project_v3.current.name}-v${var.kube_version}"
+  name                  = local.name
   cluster_distro        = "fedora-coreos"
   image                 = var.image_name
   coe                   = "kubernetes"
@@ -44,11 +48,11 @@ resource "openstack_containerinfra_clustertemplate_v1" "this" {
 
   labels = {
     kube_tag                         = "v${var.kube_version}-rancher1"
-    kube_dashboard_enabled           = "false"
-    prometheus_monitoring            = "false"
+    kube_dashboard_enabled           = var.kube_dashboard_enabled
+    prometheus_monitoring            = var.prometheus_monitoring
     influx_grafana_dashboard_enabled = "false"
-    auto_scaling_enabled             = "true"
-    auto_healing_enabled             = "true"
+    auto_scaling_enabled             = var.auto_scaling_enabled
+    auto_healing_enabled             = var.auto_healing_enabled
     auto_healing_controller          = "magnum-auto-healer"
     ingress_controller               = "octavia"
     min_node_count                   = var.min_node_count

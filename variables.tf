@@ -36,3 +36,37 @@ variable "max_node_count" {
   default = 3
 }
 
+variable "name" {
+  type    = string
+  default = null
+}
+
+variable "external_network_name" {
+  type    = string
+  default = null
+}
+
+variable "kubernetes_network_name" {
+  type    = string
+  default = null
+}
+
+variable "auto_healing_enabled" {
+  type    = bool
+  default = true
+}
+
+variable "auto_scaling_enabled" {
+  type    = bool
+  default = true
+}
+
+variable "prometheus_monitoring" {
+  type    = bool
+  default = false
+}
+
+variable "kube_dashboard_enabled" {
+  type    = bool
+  default = false
+}
