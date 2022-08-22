@@ -2,11 +2,11 @@ terraform {
   required_providers {
     openstack = {
       source  = "terraform-provider-openstack/openstack"
-      version = "~> 1.47.0"
+      version = ">= 1.48.0"
     }
 
     null = {
-      version = "~> 3.1.1"
+      version = ">= 3.1.1"
     }
   }
 }
