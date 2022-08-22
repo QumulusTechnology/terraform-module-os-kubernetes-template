@@ -1,6 +1,6 @@
 variable "kube_version" {
   type    = string
-  default = "1.22.8"
+  default = "1.23.9"
 }
 
 variable "project_name" {
