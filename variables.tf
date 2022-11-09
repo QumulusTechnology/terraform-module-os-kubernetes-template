@@ -70,3 +70,9 @@ variable "kube_dashboard_enabled" {
   type    = bool
   default = false
 }
+
+variable "master_lb_enabled" {
+  type    = bool
+  default = false
+}
+
