@@ -1,9 +1,5 @@
 locals {
-
-  external_network_name   = coalesce(var.external_network_name, "external-${var.user_name}")
-  kubernetes_network_name = coalesce(var.kubernetes_network_name, "kubernetes-${var.user_name}")
   name                    = coalesce(var.name, "${data.openstack_identity_project_v3.current.name}-v${var.kube_version}")
-
 }
 
 data "openstack_identity_project_v3" "current" {
@@ -11,11 +7,11 @@ data "openstack_identity_project_v3" "current" {
 }
 
 data "openstack_networking_network_v2" "external" {
-  name = local.external_network_name
+  name = var.external_network_name
 }
 
 data "openstack_networking_network_v2" "kubernetes" {
-  name = local.kubernetes_network_name
+  name = var.kubernetes_network_name
 }
 
 data "openstack_networking_subnet_v2" "kubernetes" {

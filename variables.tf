@@ -43,12 +43,12 @@ variable "name" {
 
 variable "external_network_name" {
   type    = string
-  default = null
+  default = "external"
 }
 
 variable "kubernetes_network_name" {
   type    = string
-  default = null
+  default = "kubernetes"
 }
 
 variable "auto_healing_enabled" {
