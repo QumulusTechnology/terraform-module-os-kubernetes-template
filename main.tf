@@ -53,5 +53,10 @@ resource "openstack_containerinfra_clustertemplate_v1" "this" {
     ingress_controller               = "octavia"
     min_node_count                   = var.min_node_count
     max_node_count                   = var.max_node_count
+    vault_ssh_enabled                = "true"
+    vault_url                        = "https://vault.qumulus.io"
+    vault_mount_point                = "openstack/ssh/${data.openstack_identity_project_v3.current.id}"
+    vault_allowed_roles              = "*"
+
   }
 }
