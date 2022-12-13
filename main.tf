@@ -8,12 +8,12 @@ data "openstack_identity_project_v3" "current" {
 
 data "openstack_networking_network_v2" "external" {
   name = var.external_network_name
-  project_id = var.project_name
+  tenant_id = var.project_name
 }
 
 data "openstack_networking_network_v2" "kubernetes" {
   name = var.kubernetes_network_name
-  project_id = var.project_name
+  tenant_id = var.project_name
 }
 
 data "openstack_networking_subnet_v2" "kubernetes" {
