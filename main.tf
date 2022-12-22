@@ -6,9 +6,10 @@ data "openstack_identity_project_v3" "current" {
   name = var.project_name
 }
 
+
 data "openstack_networking_network_v2" "external" {
   name = var.external_network_name
-  tenant_id = data.openstack_identity_project_v3.current.id
+  tenant_id = var.external_network_name == "public" ? null : data.openstack_identity_project_v3.current.id
 }
 
 data "openstack_networking_network_v2" "kubernetes" {
