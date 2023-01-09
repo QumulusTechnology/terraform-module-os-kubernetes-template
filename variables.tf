@@ -1,6 +1,6 @@
 variable "kube_version" {
   type    = string
-  default = "1.23.9"
+  default = "1.25.5"
 }
 
 variable "project_name" {
@@ -23,7 +23,7 @@ variable "node_flavor" {
 
 variable "image_name" {
   type    = string
-  default = "fedora-coreos-latest"
+  default = "Fedora-Core-37"
 }
 
 variable "min_node_count" {
