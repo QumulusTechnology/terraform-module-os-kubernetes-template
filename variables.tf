@@ -1,6 +1,11 @@
 variable "kube_version" {
   type    = string
-  default = "1.25.5"
+  default = "1.25.6"
+}
+
+variable "rancher_version" {
+  type    = string
+  default = "4"
 }
 
 variable "project_name" {

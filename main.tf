@@ -1,5 +1,5 @@
 locals {
-  name                    = coalesce(var.name, "${data.openstack_identity_project_v3.current.name}-v${var.kube_version}")
+  name = coalesce(var.name, "${data.openstack_identity_project_v3.current.name}-v${var.kube_version}")
 }
 
 data "openstack_identity_project_v3" "current" {
@@ -8,12 +8,12 @@ data "openstack_identity_project_v3" "current" {
 
 
 data "openstack_networking_network_v2" "external" {
-  name = var.external_network_name
+  name      = var.external_network_name
   tenant_id = var.external_network_name == "public" ? null : data.openstack_identity_project_v3.current.id
 }
 
 data "openstack_networking_network_v2" "kubernetes" {
-  name = var.kubernetes_network_name
+  name      = var.kubernetes_network_name
   tenant_id = data.openstack_identity_project_v3.current.id
 }
 
@@ -46,7 +46,7 @@ resource "openstack_containerinfra_clustertemplate_v1" "this" {
 
 
   labels = {
-    kube_tag                         = "v${var.kube_version}-rancher1"
+    kube_tag                         = "v${var.kube_version}-rancher${var.rancher_version}"
     kube_dashboard_enabled           = var.kube_dashboard_enabled
     prometheus_monitoring            = var.prometheus_monitoring
     influx_grafana_dashboard_enabled = "false"
