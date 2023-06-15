@@ -1,11 +1,11 @@
 variable "kube_version" {
   type    = string
-  default = "1.25.6"
+  default = "1.26.4"
 }
 
 variable "rancher_version" {
   type    = string
-  default = "4"
+  default = "2"
 }
 
 variable "project_name" {
@@ -28,7 +28,7 @@ variable "node_flavor" {
 
 variable "image_name" {
   type    = string
-  default = "Fedora-Core-37"
+  default = "Fedora-Core-38"
 }
 
 variable "min_node_count" {
