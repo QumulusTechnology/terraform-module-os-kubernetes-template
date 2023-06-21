@@ -81,3 +81,22 @@ variable "master_lb_enabled" {
   default = false
 }
 
+variable "cinder_csi_enabled" {
+  type    = bool
+  default = true
+}
+
+variable "nfs_enabled" {
+  type    = bool
+  default = false
+}
+
+variable "nfs_server" {
+  type    = string
+  default = ""
+}
+
+variable "nfs_mount_point" {
+  type    = string
+  default = ""
+}

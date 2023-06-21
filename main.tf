@@ -46,20 +46,23 @@ resource "openstack_containerinfra_clustertemplate_v1" "this" {
 
 
   labels = {
-    kube_tag                         = "v${var.kube_version}-rancher${var.rancher_version}"
-    kube_dashboard_enabled           = var.kube_dashboard_enabled
-    prometheus_monitoring            = var.prometheus_monitoring
-    influx_grafana_dashboard_enabled = "false"
-    auto_scaling_enabled             = var.auto_scaling_enabled
-    auto_healing_enabled             = var.auto_healing_enabled
-    auto_healing_controller          = "magnum-auto-healer"
-    ingress_controller               = "octavia"
-    min_node_count                   = var.min_node_count
-    max_node_count                   = var.max_node_count
-    vault_ssh_enabled                = "true"
-    vault_url                        = "https://vault.qumulus.io"
-    vault_mount_point                = "openstack/ssh/${data.openstack_identity_project_v3.current.id}"
-    vault_allowed_roles              = "*"
-
+    kube_tag                                = "v${var.kube_version}-rancher${var.rancher_version}"
+    kube_dashboard_enabled                  = var.kube_dashboard_enabled
+    prometheus_monitoring                   = var.prometheus_monitoring
+    influx_grafana_dashboard_enabled        = "false"
+    auto_scaling_enabled                    = var.auto_scaling_enabled
+    auto_healing_enabled                    = var.auto_healing_enabled
+    auto_healing_controller                 = "magnum-auto-healer"
+    ingress_controller                      = "octavia"
+    min_node_count                          = var.min_node_count
+    max_node_count                          = var.max_node_count
+    vault_ssh_enabled                       = "true"
+    vault_url                               = "https://vault.qumulus.io"
+    vault_mount_point                       = "openstack/ssh/${data.openstack_identity_project_v3.current.id}"
+    vault_allowed_roles                     = "*"
+    cinder_csi_enabled                      = var.cinder_csi_enabled
+    nfs_subdir_external_provisioner_enabled = var.nfs_enabled
+    nfs_server                              = var.nfs_server
+    nfs_mount_point                         = var.nfs_mount_point
   }
 }
