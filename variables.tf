@@ -100,3 +100,8 @@ variable "nfs_mount_point" {
   type    = string
   default = ""
 }
+
+variable "docker_volume_size" {
+  type    = number
+  default = 20
+}

@@ -33,7 +33,7 @@ resource "openstack_containerinfra_clustertemplate_v1" "this" {
   flavor                = var.node_flavor
   master_flavor         = var.master_flavor
   docker_storage_driver = "overlay2"
-  docker_volume_size    = 20
+  docker_volume_size    = var.docker_volume_size
   volume_driver         = "cinder"
   network_driver        = "calico"
   server_type           = "vm"
@@ -64,5 +64,12 @@ resource "openstack_containerinfra_clustertemplate_v1" "this" {
     nfs_subdir_external_provisioner_enabled = var.nfs_enabled
     nfs_server                              = var.nfs_server
     nfs_mount_point                         = var.nfs_mount_point
+  }
+
+   lifecycle {
+    ignore_changes = [
+      labels,
+      docker_volume_size,
+    ]
   }
 }
