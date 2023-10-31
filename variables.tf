@@ -1,11 +1,11 @@
 variable "kube_version" {
   type    = string
-  default = "1.26.4"
+  default = "1.27.7"
 }
 
 variable "rancher_version" {
   type    = string
-  default = "2"
+  default = "1"
 }
 
 variable "project_name" {
@@ -104,4 +104,10 @@ variable "nfs_mount_point" {
 variable "docker_volume_size" {
   type    = number
   default = 20
+}
+
+variable "image_repo_mirror" {
+  type = string
+  description = "The hostname of the image repository mirror"
+  default = "repo.qumulus.io"
 }
