@@ -68,7 +68,7 @@ resource "openstack_containerinfra_clustertemplate_v1" "this" {
     quay_repo_path                          = "${var.image_repo_mirror}/quay-proxy"
     gcr_repo_path                           = "${var.image_repo_mirror}/gcr-proxy"
     k8s_repo_path                           = "${var.image_repo_mirror}/k8s-proxy"
-    hyperkube_prefix                        = "${var.image_repo_mirror}/dockerhub-proxy/rancher/"
+    hyperkube_prefix                        = "${var.image_repo_mirror}/dockerhub-proxy/rancher"
   }
 
   lifecycle {
